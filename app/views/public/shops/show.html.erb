@@ -1,0 +1,15 @@
+<h1>モーニングの詳細を確認するページ</h1>
+
+<%#= image_tag @shop.get_shop_image(500,500) %>
+<p><%= @shop.title %></p>
+<p><%= @shop.customer.name %></p>
+<p><%= @shop.body %></p>
+<p>OPEN <%= @shop.open_time.strftime("%H:%M") %>〜CLOSE <%= @shop.close_time.strftime("%H:%M") %></p>
+<p><%= @shop.holiday %></p>
+<p><%= @shop.address %></p>
+<p><%= @shop.price %></p>
+<p>お店の雰囲気：<%= @shop.mood %></p>
+<p>無料Wi-Fi：<%= @shop.wifi %></p>
+<p>充電用コンセント：<%= @shop.charging %></p>
+<p>キャッシュレス決済：<%= @shop.cashless %></p>
+<%= link_to "コメントする(リンク先要編集）", root_path %>

@@ -10,7 +10,61 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+  <!--フッターを下部に固定するための記述-->
+  <div class="container" style="display: flex; flex-direction: column; min-height: 100vh;">
+    <header>
+    <!--エッグスタンド（ロゴ）：トップに戻るルートパスを設定-->
+    <%= link_to "Eggstand", root_path %>
+
+      <% if customer_signed_in? %>
+          <li style="margin: 10px;">
+            <%= link_to "投稿する", shops_path, method: :post %>
+          </li>
+          <li style="margin: 10px;">
+            <%= link_to "マイページ（リンク先要編集）", root_path %>
+          </li>
+          <li style="margin: 10px;">
+            <%= link_to "about", about_path %>
+          </li>
+          <li style="margin: 10px;">
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+          </li>
+
+      <% elsif admin_signed_in? %>
+          <li style="margin: 10px;">
+            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+          </li>
+          <li style="margin: 10px;">
+            <%= link_to "会員一覧", admin_customers_path %>
+          </li>
+          <li style="margin: 10px;">
+            <%= link_to "ジャンル一覧", admin_genres_path %>
+          </li>
+
+      <% else %>
+          <li style="margin: 10px;">
+            <%=  link_to "ゲストログイン(リンク先要編集)", root_path %>
+          </li>
+          <li style="margin: 10px;">
+            <%= link_to "新規登録", new_customer_registration_path %>
+          </li>
+          <li style="margin: 10px;">
+            <%= link_to "ログイン", customer_session_path, class: "btn btn-outline-light btn-sm" %>
+          </li>
+          <li style="margin: 10px;">
+            <%= link_to "About", about_path %>
+          </li>
+      <% end %>
+
+    </header>
+
+    <body>
+      <%= yield %>
+    </body>
+
+    <!--margin-top: auto;はフッターを下部に固定する記述-->
+    <footer class="footer" style="background-color: #E0E0E0; margin-top: auto;">
+      <p style="color: #fff; text-align: center;">CopyRight yuka</p>
+    </footer>
+  </div>
 </html>

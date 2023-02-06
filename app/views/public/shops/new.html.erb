@@ -1,0 +1,86 @@
+<h1>新規投稿</h1>
+
+  <%= form_with model: @shop, url: shops_path, local:true do |f| %>
+
+    <div class="form-group">
+      <%= f.label :shop_image,"モーニング画像" %>
+      <%= f.file_field :shop_image, accept: 'image/*' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :title,"店舗名" %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :body,"紹介文" %>
+      <%= f.text_area :body %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :open_time,"モーニング提供時間(開始)"%>
+      <%= f.time_select :open_time %>
+      <%= f.label :close_time,"〜(終了)"%>
+      <%= f.time_select :close_time %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :address,"場所" %>
+      <%= f.text_field :address, placeholder:"東京都新宿区新宿１丁目１０−１", size: "60" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :price,"価格帯" %>
+      <%= f.text_field :price %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :holiday,"定休日" %>
+      <%= f.text_field :holiday %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :mood,"雰囲気" %>
+
+      <%= f.radio_button :mood, :true, checked: true %>
+      <%= f.label :mood, "落ち着いている" %>
+
+      <%= f.radio_button :mood, :false %>
+      <%= f.label :mood, "にぎやか" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :wifi,"無料wi-fi" %>
+
+      <%= f.radio_button :wifi, :true %>
+      <%= f.label :wifi, "あり" %>
+
+      <%= f.radio_button :wifi, :false %>
+      <%= f.label :wifi, "なし" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :charging,"充電用コンセント" %>
+
+      <%= f.radio_button :charging, :true %>
+      <%= f.label :charging, "あり" %>
+
+      <%= f.radio_button :charging, :false %>
+      <%= f.label :charging, "なし" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :cashless,"キャッシュレス決済" %>
+
+      <%= f.radio_button :cashless, :true %>
+      <%= f.label :cashless, "可" %>
+
+      <%= f.radio_button :cashless, :false %>
+      <%= f.label :cashless, "不可" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "投稿する" %>
+    </div>
+
+  <% end %>
