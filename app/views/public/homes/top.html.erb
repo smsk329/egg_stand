@@ -1,13 +1,18 @@
 <h1>モーニング一覧</h1>（全<%= @shops.count %>件）
 
 <% @shops.each do |shop| %>
+
   <%= link_to root_path do %>
     <%= shop.title %>
   <% end %>
-
   <!--モーニングの提供開始と終了の時刻-->
   <p>OPEN <%= shop.open_time.strftime("%H:%M") %>〜CLOSE <%= shop.close_time.strftime("%H:%M") %></p>
   <p><%= shop.address %></p>
+  <%= link_to root_path do %>
+    <div>
+      <%= image_tag shop.get_shop_image(200,150) %>
+    </div>
+  <% end %>
   <p><%= shop.price %></p>
   <p><%= shop.customer.name %></p>
 <% end %>
