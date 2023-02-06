@@ -5,9 +5,9 @@ class Public::ShopsController < ApplicationController
   end
 
   def create
-    @shop = Shop.new(shop_params)
-    @shop.customer_id = current_customer.id
-    @shop.save
+    shop = Shop.new(shop_params)
+    shop.customer_id = current_customer.id
+    shop.save
       redirect_to root_path
   end
 
@@ -21,12 +21,19 @@ class Public::ShopsController < ApplicationController
   end
 
   def edit
+    @shop = Shop.find(params[:id])
   end
 
   def update
+    shop = Shop.find(params[:id])
+    shop.update(shop_params)
+      redirect_to shop_path(shop.id)
   end
 
   def destroy
+    shop = Shop.find(params[:id])
+    shop.destroy
+    redirect_to root_path
   end
 
   private

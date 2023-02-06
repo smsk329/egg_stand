@@ -1,6 +1,4 @@
 <h1>モーニングの詳細を確認するページ</h1>
-<!--githubテスト用記述-->
-<!--githubテスト用記述(yuka)-->
 
 <div><%= image_tag @shop.get_shop_image(300,200) %></div>
 <p><%= @shop.title %></p>
@@ -14,5 +12,10 @@
 <p>無料Wi-Fi：<%= @shop.wifi %></p>
 <p>充電用コンセント：<%= @shop.charging %></p>
 <p>キャッシュレス決済：<%= @shop.cashless %></p>
+
+<% if @shop.customer == current_customer %>
+  <%= link_to "編集", edit_shop_path(@shop.id) %>
+  <%= link_to "削除", shop_path(@shop.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
+<% end %>
 
 <%= link_to "コメントする(リンク先要編集）", root_path %>

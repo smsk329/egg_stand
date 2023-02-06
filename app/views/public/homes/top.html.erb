@@ -2,13 +2,13 @@
 
 <% @shops.each do |shop| %>
 
-  <%= link_to root_path do %>
+  <%= link_to shop_path(shop.id) do %>
     <%= shop.title %>
   <% end %>
   <!--モーニングの提供開始と終了の時刻-->
   <p>OPEN <%= shop.open_time.strftime("%H:%M") %>〜CLOSE <%= shop.close_time.strftime("%H:%M") %></p>
   <p><%= shop.address %></p>
-  <%= link_to root_path do %>
+  <%= link_to shop_path(shop.id) do %>
     <div>
       <%= image_tag shop.get_shop_image(200,150) %>
     </div>

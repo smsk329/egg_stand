@@ -18,7 +18,7 @@
 
       <% if customer_signed_in? %>
           <li style="margin: 10px;">
-            <%= link_to "投稿する", shops_path, method: :post %>
+            <%= link_to "投稿する", new_shop_path %>
           </li>
           <li style="margin: 10px;">
             <%= link_to "マイページ（リンク先要編集）", root_path %>
@@ -29,6 +29,7 @@
           <li style="margin: 10px;">
             <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
           </li>
+          <%= current_customer.name %>さんがログインしました。
 
       <% elsif admin_signed_in? %>
           <li style="margin: 10px;">
