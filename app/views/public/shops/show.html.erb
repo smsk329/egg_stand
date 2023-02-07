@@ -14,18 +14,39 @@
 <p>定休日：<%= @shop.holiday %></p>
 <p>価格帯：約<%= @shop.price %>円／一人</p>
 
-  <p>お店の雰囲気：<%= @shop.mood %></p>
+<!--お店の雰囲気はboolean型でなく、ちゃんと表示されていないので修正する-->
+  <p>お店の雰囲気：
+    <% if @shop.mood == false %>
+      にぎやか
+    <% else %>
+      落ち着いている
+    <% end %>
+    <%= @shop.mood %>
+  </p>
 
   <p>無料Wi-Fi：
-    <% if @shop.mood == false %>
+    <% if @shop.wifi == false %>
       なし
     <% else %>
       あり
     <% end %>
   </p>
 
-<p>充電用コンセント：<%= @shop.charging %></p>
-<p>キャッシュレス決済：<%= @shop.cashless %></p>
+  <p>充電用コンセント：
+    <% if @shop.charging == false %>
+      なし
+    <% else %>
+      あり
+    <% end %>
+  </p>
+
+  <p>キャッシュレス決済：
+    <% if @shop.cashless == false %>
+      不可
+    <% else %>
+      可
+    <% end %>
+  </p>
 
 <% if @shop.customer == current_customer %>
   <%= link_to "編集", edit_shop_path(@shop.id) %>
