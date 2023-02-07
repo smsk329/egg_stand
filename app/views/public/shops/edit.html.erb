@@ -40,12 +40,12 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :mood,"雰囲気" %>
+      <%= f.label :mood, "お店の雰囲気" %>
 
-      <%= f.radio_button :mood, :true, checked: true %>
+      <%= f.radio_button :mood,"quiet" %>
       <%= f.label :mood, "落ち着いている" %>
 
-      <%= f.radio_button :mood, :false %>
+      <%= f.radio_button :mood,"active" %>
       <%= f.label :mood, "にぎやか" %>
     </div>
 

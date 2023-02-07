@@ -2,6 +2,8 @@ class Shop < ApplicationRecord
   has_one_attached :shop_image
   belongs_to :customer
 
+  enum mood: { quiet: 0, active: 1 }
+
   def get_shop_image(width, height)
     unless shop_image.attached?
       file_path = Rails.root.join('app/assets/images/noimage.jpg')

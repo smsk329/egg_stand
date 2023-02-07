@@ -13,7 +13,7 @@
       <%= image_tag shop.get_shop_image(200,150) %>
     </div>
   <% end %>
-  <p><%= shop.price %></p>
+  <p>価格帯：約<%=shop.price %>円／一人</p>
 
   <div>
     <%= image_tag shop.customer.get_customer_image(45,45) %>

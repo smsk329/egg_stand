@@ -1,0 +1,6 @@
+ ja:
+    enums:
+      shop:
+        mood:
+          quiet: "落ち着いている"
+          active: "にぎやか"

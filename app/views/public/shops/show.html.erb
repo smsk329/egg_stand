@@ -14,14 +14,8 @@
 <p>定休日：<%= @shop.holiday %></p>
 <p>価格帯：約<%= @shop.price %>円／一人</p>
 
-<!--お店の雰囲気はboolean型でなく、ちゃんと表示されていないので修正する-->
   <p>お店の雰囲気：
-    <% if @shop.mood == false %>
-      にぎやか
-    <% else %>
-      落ち着いている
-    <% end %>
-    <%= @shop.mood %>
+    <%= @shop.mood_i18n %>
   </p>
 
   <p>無料Wi-Fi：
