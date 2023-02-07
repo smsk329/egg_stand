@@ -12,12 +12,13 @@ class Public::ShopsController < ApplicationController
   end
 
   def index
-    @shop = Shop.all
+    @shops = Shop.all
     # 投稿一覧はtopページに表示するため今のところ不要
   end
 
   def show
     @shop = Shop.find(params[:id])
+    @customer = @shop.customer
   end
 
   def edit
@@ -33,7 +34,7 @@ class Public::ShopsController < ApplicationController
   def destroy
     shop = Shop.find(params[:id])
     shop.destroy
-    redirect_to root_path
+      redirect_to root_path
   end
 
   private

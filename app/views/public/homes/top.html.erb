@@ -14,5 +14,10 @@
     </div>
   <% end %>
   <p><%= shop.price %></p>
-  <p><%= shop.customer.name %></p>
+
+  <div>
+    <%= image_tag shop.customer.get_customer_image(45,45) %>
+    <%= shop.customer.name %>
+  </div>
+
 <% end %>
