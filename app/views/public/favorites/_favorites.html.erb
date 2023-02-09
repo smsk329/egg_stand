@@ -1,0 +1,25 @@
+<% if customer_signed_in? %>
+
+  <!--一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+  <% if shop.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to shop_favorites_path(shop), method: :delete do %>
+      <span style="color: red;">♥</span><%= shop.favorites.count %>
+      <% end %>
+    </p>
+
+    <!--一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+    <% else %>
+    <p>
+      <%= link_to shop_favorites_path(shop), method: :post do %>
+        <span>♥</span><%= shop.favorites.count %>
+      <% end %>
+    </p>
+  <% end %>
+  
+<!--ログアウト時はいいね機能は使えない-->
+<% else %>
+  <p>
+    <span>♥</span><%= shop.favorites.count %>
+  </p>
+<% end %>

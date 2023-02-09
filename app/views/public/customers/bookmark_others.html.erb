@@ -1,4 +1,4 @@
-<h1>マイページ</h1>
+<p>他人のいいね一覧</p>
 
 <!--①ここから部分テンプレート化できます-->
   <div><%= image_tag @customer.get_customer_image(150,100) %></div>
@@ -7,13 +7,11 @@
   <%= link_to "編集", edit_customer_path(@customer.id) %>
 <!--ここまで部分テンプレート化できます-->
 
-  <%= link_to "いいね一覧", bookmark_customer_path(@customer) %>
 
-<h3>投稿一覧</h3>
+<h3>いいね一覧</h3>
 
 <!--②ここから部分テンプレート化できます。homes/topと同じ記述です-->
-  <% @shops.each do |shop| %>
-
+  <% @bookmarks.each do |shop|%>
     <%= link_to shop_path(shop.id) do %>
       <%= shop.title %>
     <% end %>

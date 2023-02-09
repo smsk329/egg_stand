@@ -20,9 +20,19 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
     get 'customers/withdrawal_check' => "customers#withdrawal_check", as: "withdrawal_check"
     patch 'customers/withdrawal' => "customers#withdrawal", as: "withdrawal"
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers, only: [:show, :edit, :update]do
+      member do
+        # URLにIDを含める場合のオリジナルアクションのルーティング
+        get :bookmark
+        get :bookmark_others
+        get :show_others
+      end
+    end
 
-    resources :shops, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+    resources :shops, only: [:index, :show, :new, :create, :edit, :update, :destroy]do
+      resource :favorites, only: [:create, :destroy]
+    end
+
     resources :comments, only: [:create, :destroy]
   end
 
