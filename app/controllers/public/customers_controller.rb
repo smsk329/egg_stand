@@ -24,8 +24,6 @@ class Public::CustomersController < ApplicationController
   #  他のユーザーがいいねした投稿を表示
   def bookmark_others
     @customer = Customer.find(params[:id])
-    # ユーザーidが、このユーザがいいねしたレコードをすべて取得。shop_idも紐付ける。
-   # pluckはテーブルの中からカラムの一覧をとってくる
     bookmark = Favorite.where(customer_id: @customer.id).pluck(:shop_id)
     @bookmarks = Shop.find(bookmark)
   end

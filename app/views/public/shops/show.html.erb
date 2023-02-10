@@ -3,6 +3,7 @@
 <div><%= image_tag @shop.get_shop_image(300,200) %></div>
 <p><%= @shop.title %></p>
 <p><%= @shop.address %></p>
+
 <ul>
   <% @shop.genre_relations.each do |genre| %>
     <li><%= genre.genre.name %></li>
@@ -55,4 +56,27 @@
   <!--いいねボタンの部分テンプレート-->
   <%= render "public/favorites/favorites", shop: @shop %>
 
-<%= link_to "コメントする(リンク先要編集）", root_path %>
+<!--コメント機能-->
+<div>
+  <p>コメント件数：<%= @shop.comments.count %></p>
+  <% @shop.comments.each do |comment| %>
+  <div>
+    <%= image_tag comment.customer.get_customer_image(30,30) %>
+    <%= comment.customer.name %>
+  </div>
+    <p><%= comment.post_comment %></p>
+    <%= comment.created_at.strftime('%Y/%m/%d') %>
+
+    <% if comment.customer == current_customer %>
+      <%= link_to "削除", shop_comment_path(comment.shop, comment), method: :delete %>
+    <% end %>
+
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model: [@shop, @comment] do |f| %>
+    <%= f.text_area :post_comment, rows: '3', placeholder: "コメントを入力" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+</div>

@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :shops, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :genre_relation
 
   has_one_attached :customer_image

@@ -2,6 +2,7 @@ class Shop < ApplicationRecord
   has_one_attached :shop_image
   belongs_to :customer
   has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :genre_relations
 
   enum mood: { quiet: 0, active: 1 }

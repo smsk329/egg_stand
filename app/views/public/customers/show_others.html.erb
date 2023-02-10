@@ -1,13 +1,9 @@
 <h1>他人のユーザー情報一覧</h1>
 
-<!--①ここから部分テンプレート化できます-->
-  <div><%= image_tag @customer.get_customer_image(150,100) %></div>
-  <p><%= @customer.name %></p>
-  <p>ひとこと：<%= @customer.introduction %></p>
-  <%= link_to "編集", edit_customer_path(@customer.id) %>
-<!--ここまで部分テンプレート化できます-->
+<!--ユーザー情報の部分テンプレート-->
+  <%= render "public/customers/information", customer: @customer %>
 
-  <%= link_to "いいね一覧", bookmark_customer_path(@customer) %>
+  <%= link_to "いいね一覧", bookmark_others_customer_path(@customer) %>
 
 <h3>投稿一覧</h3>
 

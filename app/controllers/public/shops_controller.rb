@@ -24,6 +24,7 @@ class Public::ShopsController < ApplicationController
   def show
     @shop = Shop.find(params[:id])
     @customer = @shop.customer
+    @comment = Comment.new
   end
 
   def edit
@@ -34,7 +35,7 @@ class Public::ShopsController < ApplicationController
     # shop = Shop.find(params[:id])
     # shop.update(shop_params)
       # redirect_to shop_path(shop.id)
-      
+
     @shop = Shop.find(params[:id])
     @shop.customer_id = current_customer.id
     if @shop.update(shop_params)

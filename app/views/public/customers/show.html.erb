@@ -1,11 +1,7 @@
 <h1>マイページ</h1>
 
-<!--①ここから部分テンプレート化できます-->
-  <div><%= image_tag @customer.get_customer_image(150,100) %></div>
-  <p><%= @customer.name %></p>
-  <p>ひとこと：<%= @customer.introduction %></p>
-  <%= link_to "編集", edit_customer_path(@customer.id) %>
-<!--ここまで部分テンプレート化できます-->
+<!--部分テンプレート-->
+  <%= render "public/customers/information", customer: @customer %>
 
   <%= link_to "いいね一覧", bookmark_customer_path(@customer) %>
 
@@ -28,8 +24,9 @@
     <p>価格帯：約<%= shop.price %>円／一人</p>
     <p><%= shop.customer.name %></p>
 
-    <!--いいねボタンの部分テンプレート-->
-    <%= render "public/favorites/favorites", shop: shop %>
+  <!--いいねボタンの部分テンプレート-->
+  <%= render "public/favorites/favorites", shop: shop %>
 
   <% end %>
 <!--ここまで部分テンプレート化できます-->
+
