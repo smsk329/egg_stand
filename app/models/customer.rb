@@ -19,4 +19,12 @@ class Customer < ApplicationRecord
       customer_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def self.guest
+    # ゲストログイン時にemailを基準に探す。該当するemailがなければ作成する。
+    find_or_create_by!(email: 'guest@test.com', name: 'guest') do |customer|
+      # ゲストユーザーにはパスワードをランダムに付与する
+      customer.password = SecureRandom.urlsafe_base64
+    end
+  end
+
 end

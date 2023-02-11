@@ -44,7 +44,7 @@
 
       <% else %>
           <li style="margin: 10px;">
-            <%=  link_to "ゲストログイン(リンク先要編集)", root_path %>
+            <%=  link_to "ゲストログイン", public_guest_sign_in_path, method: :post %>
           </li>
           <li style="margin: 10px;">
             <%= link_to "新規登録", new_customer_registration_path %>
