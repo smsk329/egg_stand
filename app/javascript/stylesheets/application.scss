@@ -13,57 +13,40 @@
   font-weight: bold;
   font-family: "Arial Black";
   text-decoration: none;
+  // ロゴカラー黄色
   color: #FFD428;
-  font-size: 40px; }
-  @media (min-width: 600px) {
-    .brand {
-      margin-bottom: 1rem;
-} }
+  font-size: 40px;
+}
+
 .site-header {
   position: relative;
-  /*背景色黄色*/
-  // background-color: #FFD428;
 }
 
 .site-header__wrapper {
   padding-top: 1rem;
-  padding-bottom: 1rem; }
-  @media (min-width: 600px) {
-    .site-header__wrapper {
-      /*ヘッダーの配置を中央寄せにする*/
-      text-align: center; } }
-@media (min-width: 600px) {
-  .nav__wrapper {
+  padding-bottom: 1rem;
+  text-align: center;
+  background-color: #F7F7F7;
+}
+
+.nav__wrapper {
     /*リストを横並びにする*/
     display: inline-flex;
     /*リストの点を消す*/
     list-style-type: none;
-  } }
-
-// .nav {
-//   display: inline-block;
-// }
-
-@media (max-width: 599px) {
-  .nav__wrapper {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    left: 0;
-    z-index: -1;
-    background-color: #d9f0f7;
-    visibility: hidden;
-    opacity: 0; } }
+    // リストを中央寄せにする
+    margin: 0 auto;
+}
 
 .nav__item a{
   display: block;
   font-family: 'ヒラギノ丸ゴ ProN';
   /*リストの上、左右、下の余白*/
-  padding: 5px 20px 0px;
+  padding: 20px 20px 0px;
   /*リンクの下線を外す*/
   text-decoration: none;
   font-size: 13px;
-  color: #C4C4C4;
+  color: #6F6F6F;
   transform: scale(1);
 }
 
@@ -88,4 +71,15 @@
 .login {
  text-align: right;
  margin-right: 30px;
+}
+
+.title {
+  margin : 30px 0 30px 30px;
+  font-family: "ヒラギノ丸ゴ ProN";
+  font-weight: bold;
+  font-size: 30px;
+  padding: 1rem 2rem;
+  display: inline-block;
+  border-top: 3px dotted #FFD428;
+  border-bottom: 3px dotted #FFD428;
 }

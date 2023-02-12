@@ -1,16 +1,23 @@
-<h1>マイページ</h1>
+<h1 class="title">マイページ</h1>
 
-<!--部分テンプレート-->
-  <%= render "public/customers/information", customer: @customer %>
+<div class="container">
+  <div class="row">
 
-  <%= link_to "いいね一覧", bookmark_customer_path(@customer) %>
+    <div class="col-3">
+      <!--部分テンプレート-->
+        <%= render "public/customers/information", customer: @customer %>
 
-<h3>投稿一覧</h3>
+        <%= link_to "いいね一覧", bookmark_customer_path(@customer) %>
+    </div>
 
-<!--投稿情報の部分テンプレート-->
-<% if @shops.present? %>
-  <%= render "public/customers/collection", collection: @shops %>
-<% else %>
- まだ投稿していません。
-<% end %>
+    <div class="col-9">
+      <!--投稿情報の部分テンプレート-->
+      <% if @shops.present? %>
+        <%= render "public/customers/collection", collection: @shops %>
+      <% else %>
+       まだ投稿していません。
+      <% end %>
+    </div>
 
+  </div>
+</div>

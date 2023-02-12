@@ -10,9 +10,6 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <!--フッターを下部に固定するための記述-->
-  <!--<div class="container" style="display: flex; flex-direction: column; min-height: 100vh;">-->
-
     <header class="site-header">
       <div class="wrapper site-header__wrapper">
       <!--エッグスタンド（ロゴ）：トップに戻るルートパスを設定-->
@@ -128,10 +125,9 @@
       <%= yield %>
     </body>
 
-    <!--margin-top: auto;はフッターを下部に固定する記述-->
-    <footer class="footer" style="background-color: #E0E0E0;">
+<!--投稿一覧画面で記述したfloat: left;（要素の横並び）の影響を受けないためにclear: both;を記述。-->
+    <footer class="footer" style="background-color: #E0E0E0; clear: both;">
       <p style="color: #fff; text-align: center;">CopyRight yuka</p>
     </footer>
-  <!--</div>-->
 </html>
 

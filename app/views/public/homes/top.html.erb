@@ -1,28 +1,36 @@
-<h1>モーニング一覧</h1>（全<%= @shops.count %>件）
+<h1 class="title">モーニング一覧</h1>（全<%= @shops.count %>件）
 
-<!--検索フォーム-->
-<%= search_form_for @q, url: root_path do |f| %>
-  <!--title_contは、あいまい検索を指定-->
-  <%= f.search_field :title_cont, placeholder: '店舗名' %>
-  <%= f.submit "検索" %>
-<% end %>
+<div class="container">
+  <div class="row">
 
-<!--allを表示させるための記述-->
-  <span>
-    <%= link_to root_path(genre_id: ""), class: "badge badge-pill badge-warning" do %>
-      <i class="fa-solid fa-tag"></i>すべて表示
-    <% end %>
-  </span>
-
-  <% Genre.all.each do |genre| %>
-    <span>
-      <%= link_to root_path(genre_id: genre.id), class: "badge badge-pill badge-warning" do %>
-        <i class="fa-solid fa-tag"></i><%= genre.name %>
+    <div class="col-3">
+      <!--検索フォーム-->
+      <%= search_form_for @q, url: root_path do |f| %>
+        <!--title_contは、あいまい検索を指定-->
+        <%= f.search_field :title_cont, placeholder: '店舗名' %>
+        <%= f.submit "検索" %>
       <% end %>
-    </span>
-  <% end %>
 
-  <br>
+      <!--allを表示させるための記述-->
+      <span>
+        <%= link_to root_path(genre_id: ""), class: "badge badge-pill badge-warning" do %>
+          <i class="fa-solid fa-tag"></i>すべて表示
+        <% end %>
+      </span>
 
-<!--投稿情報の部分テンプレート-->
-  <%= render "public/customers/collection", collection: @shops %>
+      <% Genre.all.each do |genre| %>
+        <span>
+          <%= link_to root_path(genre_id: genre.id), class: "badge badge-pill badge-warning" do %>
+            <i class="fa-solid fa-tag"></i><%= genre.name %>
+          <% end %>
+        </span>
+      <% end %>
+    </div>
+
+    <div class="col-9">
+      <!--投稿情報の部分テンプレート-->
+      <%= render "public/customers/collection", collection: @shops %>
+    </div>
+
+  </div>
+</div>
