@@ -1,6 +1,13 @@
-<h1>モーニング一覧</h1>（全<%= @shops.count %>件）
+<h1>モーニング一覧</h1>（全<%= @shop.count %>件）
 
-<% @shops.each do |shop| %>
+<!--検索フォーム-->
+<%= search_form_for @q, url: root_path do |f| %>
+  <!--title_contは、あいまい検索を指定-->
+  <%= f.search_field :title_cont, placeholder: '店舗名' %>
+  <%= f.submit "検索" %>
+<% end %>
+
+<% @shop.each do |shop| %>
 
   <%= link_to shop_path(shop.id) do %>
     <%= shop.title %>

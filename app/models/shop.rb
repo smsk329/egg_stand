@@ -3,7 +3,8 @@ class Shop < ApplicationRecord
   belongs_to :customer
   has_many :favorites, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :genre_relations
+  has_many :genre_relations, dependent: :destroy
+  has_many :genres, through: :genre_relations
 
   enum mood: { quiet: 0, active: 1 }
 
@@ -17,6 +18,11 @@ class Shop < ApplicationRecord
 
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
+  end
+
+# ransackで検索するカラムを指定
+  def self.ransackable_attributes(auth_object = nil)
+    ["title"]
   end
 
 end

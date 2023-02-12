@@ -4,7 +4,7 @@
   <% if shop.favorited_by?(current_customer) %>
     <p>
       <%= link_to shop_favorites_path(shop), method: :delete do %>
-      <span style="color: red;">♥</span><%= shop.favorites.count %>
+      <span style="color: #FFCC00;"><i class="fa-solid fa-star"></i></span><%= shop.favorites.count %>
       <% end %>
     </p>
 
@@ -12,14 +12,14 @@
     <% else %>
     <p>
       <%= link_to shop_favorites_path(shop), method: :post do %>
-        <span>♥</span><%= shop.favorites.count %>
+        <span style="color: #CACACA;"><i class="fa-solid fa-star"></i></span><%= shop.favorites.count %>
       <% end %>
     </p>
   <% end %>
-  
+
 <!--ログアウト時はいいね機能は使えない-->
 <% else %>
   <p>
-    <span>♥</span><%= shop.favorites.count %>
+    <span style="color: #CACACA;"><i class="fa-solid fa-star"></i></span></span><%= shop.favorites.count %>
   </p>
 <% end %>

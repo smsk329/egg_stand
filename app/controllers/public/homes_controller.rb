@@ -1,10 +1,11 @@
 class Public::HomesController < ApplicationController
 
   def top
-    @shops = Shop.all.order("created_at DESC")
+    @q = Shop.ransack(params[:q])
+    @shop = @q.result
   end
 
   def about
   end
-  
+
 end
