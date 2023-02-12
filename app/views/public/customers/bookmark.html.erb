@@ -5,24 +5,9 @@
 
 <h3>いいね一覧</h3>
 
-<!--②ここから部分テンプレート化できます。homes/topと同じ記述です-->
-  <% @bookmarks.each do |shop|%>
-    <%= link_to shop_path(shop.id) do %>
-      <%= shop.title %>
-    <% end %>
-    <!--モーニングの提供開始と終了の時刻-->
-    <p>OPEN <%= shop.open_time.strftime("%H:%M") %>〜CLOSE <%= shop.close_time.strftime("%H:%M") %></p>
-    <p><%= shop.address %></p>
-    <%= link_to shop_path(shop.id) do %>
-      <div>
-        <%= image_tag shop.get_shop_image(200,150) %>
-      </div>
-    <% end %>
-    <p>価格帯：約<%= shop.price %>円／一人</p>
-    <p><%= shop.customer.name %></p>
-
-    <!--いいねボタンの部分テンプレート-->
-    <%= render "public/favorites/favorites", shop: shop %>
-
-  <% end %>
-<!--ここまで部分テンプレート化できます-->
+<!--投稿情報の部分テンプレート-->
+<% if @bookmarks.present? %>
+  <%= render "public/customers/collection", collection: @bookmarks %>
+<% else %>
+ いいねした投稿はありません。
+<% end %>

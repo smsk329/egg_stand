@@ -6,33 +6,23 @@
   <%= f.search_field :title_cont, placeholder: '店舗名' %>
   <%= f.submit "検索" %>
 <% end %>
-<span><%= link_to "all", root_path(genre_id: ""), class: "badge badge-primary" %></span>
-<% Genre.all.each do |genre| %>
-  <span><%= link_to genre.name, root_path(genre_id: genre.id), class: "badge badge-primary" %></span>
-<% end %>
 
-<% @shops.each do |shop| %>
-  <%= link_to shop_path(shop.id) do %>
-    <%= shop.title %>
-  <% end %>
-  <!--モーニングの提供開始と終了の時刻-->
-  <p>OPEN <%= shop.open_time.strftime("%H:%M") %>〜CLOSE <%= shop.close_time.strftime("%H:%M") %></p>
-  <p><%= shop.address %></p>
-  <%= link_to shop_path(shop.id) do %>
-    <div>
-      <%= image_tag shop.get_shop_image(200,150) %>
-    </div>
-  <% end %>
-  <p>価格帯：約<%=shop.price %>円／一人</p>
+<!--allを表示させるための記述-->
+  <span>
+    <%= link_to root_path(genre_id: ""), class: "badge badge-pill badge-warning" do %>
+      <i class="fa-solid fa-tag"></i>すべて表示
+    <% end %>
+  </span>
 
-  <%= link_to show_others_customer_path(shop.customer.id) do %>
-    <div>
-      <%= image_tag shop.customer.get_customer_image(45,45) %>
-      <%= shop.customer.name %>
-    </div>
+  <% Genre.all.each do |genre| %>
+    <span>
+      <%= link_to root_path(genre_id: genre.id), class: "badge badge-pill badge-warning" do %>
+        <i class="fa-solid fa-tag"></i><%= genre.name %>
+      <% end %>
+    </span>
   <% end %>
 
-    <!--いいねボタンの部分テンプレート-->
-    <%= render "public/favorites/favorites", shop: shop %>
+  <br>
 
-<% end %>
+<!--投稿情報の部分テンプレート-->
+  <%= render "public/customers/collection", collection: @shops %>

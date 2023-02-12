@@ -4,15 +4,9 @@
 <p><%= @shop.title %></p>
 <p><%= @shop.address %></p>
 
-<!--<ul>-->
-  <%# @shop.genre_relations.each do |genre| %>
-    <%#= genre.genre.name %>
-  <%# end %>
-<!--</ul>-->
-
-<% @shop.genres.each do |genre| %>
-    <%= genre.name %>
-<% end %>
+  <% @shop.genres.each do |genre| %>
+      <span class="badge badge-pill badge-warning"><%= genre.name %></span>
+  <% end %>
 
 <div>
   <%= image_tag @customer.get_customer_image(45,45) %>
