@@ -40,6 +40,10 @@
     list-style-type: none;
   } }
 
+// .nav {
+//   display: inline-block;
+// }
+
 @media (max-width: 599px) {
   .nav__wrapper {
     position: absolute;
@@ -80,6 +84,7 @@
       right: 1rem;
       top: 1rem; } }
 
+// ヘッダーのすぐ下にユーザー名
 .login {
  text-align: right;
  margin-right: 30px;

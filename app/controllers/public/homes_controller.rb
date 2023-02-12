@@ -1,8 +1,10 @@
 class Public::HomesController < ApplicationController
 
   def top
-    @q = Shop.ransack(params[:q])
-    @shop = @q.result
+    shops = Shop.all.includes(:genres)
+    @q = shops.ransack(params[:q])
+    @shops = @q.result
+    @shops = @shops.select{|o| o.genre_ids.include?(params[:genre_id].to_i) } if params[:genre_id].present?
   end
 
   def about
