@@ -9,7 +9,6 @@ class CreateShops < ActiveRecord::Migration[6.1]
       t.string :address ,null: false
       t.integer :price ,null: false
       t.string :holiday ,null: false
-      t.string :menu ,null: false
       t.string :mood ,null: false
       t.boolean :wifi
       t.boolean :charging
