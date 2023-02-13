@@ -1,2 +1,57 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h1 class="title">会員ステータス変更</h1>
+    <%= @customer.name %>さんの会員情報編集
+
+        <%= form_with model:@customer, url: admin_customer_path(@customer), local:true do |f| %>
+
+          <table style = "margin-left: 30px;">
+            <tr>
+              <th>
+                <p>会員ID</p>
+              </th>
+              <td valign = "top">
+                <p style="padding-left: 30px;"><%= @customer.id %></p>
+              </td>
+            </tr>
+
+            <tr>
+              <th>
+               <p>アカウント名</p>
+              </th>
+              <td>
+                <p style="padding-left: 30px;"><%= f.text_field :name, class: "form-control name" %></P>
+              </td>
+              </th>
+            </tr>
+
+            <tr>
+              <th>
+               <p>メールアドレス</p>
+              </th>
+              <td>
+                <p style="padding-left: 30px;"><%= f.text_field :email, class: "form-control email" %></p>
+              </td>
+              </th>
+            </tr>
+
+            <tr>
+              <th>
+                <p>会員ステータス</p>
+              </th>
+              <td>
+                <p style="padding-left: 30px;">
+                  <%= f.radio_button :is_deleted, :false %>
+                  <%= f.label :is_deleted, "有効" %>
+
+                  <%= f.radio_button :is_deleted, :true %>
+                  <%= f.label :is_deleted, "退会" %></p>
+              </td>
+            </tr>
+
+            <tr>
+              <th></th>
+              <td><p style="padding-left: 30px;"><%= f.submit "変更を保存", class: 'btn btn-success' %></p></td>
+            </tr>
+          </table>
+        <% end %>
+
+</div>

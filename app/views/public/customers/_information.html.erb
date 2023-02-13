@@ -1,3 +1,5 @@
+<% if customer.is_deleted == false %>
+
   <div><%= image_tag customer.get_customer_image(150,100) %></div>
   <p><%= customer.name %></p>
   <p>ひとこと：<%= customer.introduction %></p>
@@ -5,3 +7,7 @@
   <% if customer == current_customer %>
   <%= link_to "編集", edit_customer_path(customer.id) %>
   <% end %>
+
+<% else %>
+  <p>退会済みのユーザー</p>
+<% end %>

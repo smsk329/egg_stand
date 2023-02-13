@@ -34,7 +34,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
       end
     end
 
-    resources :shops, only: [:index, :show, :new, :create, :edit, :update, :destroy]do
+    resources :shops, only: [:show, :new, :create, :edit, :update, :destroy]do
       resources :comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
@@ -44,8 +44,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
     get 'homes/top' => "homes#top", as: "top"
 
+    get 'customers/comment_edit' => "customers#comment_edit", as: "comment_edit"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
+    # 不要と思われる
     resources :genre_relations, only: [:destroy]
 
   end

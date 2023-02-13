@@ -10,7 +10,7 @@
         <%= link_to "いいね一覧", bookmark_others_customer_path(@customer) %>
     </div>
 
-    <div class="col-3">
+    <div class="col-9">
       <!--投稿情報の部分テンプレート-->
       <% if @shops.present? %>
         <%= render "public/customers/collection", collection: @shops %>

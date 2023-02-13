@@ -10,6 +10,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+<div id="wrapper">
+  <div id="container">
+
     <header class="site-header">
       <div class="wrapper site-header__wrapper">
       <!--エッグスタンド（ロゴ）：トップに戻るルートパスを設定-->
@@ -64,6 +67,13 @@
               <%= link_to admin_customers_path do %>
                 <i class="fa-solid fa-users"style="font-size:35px;"></i><br>
                 会員一覧
+              <% end %>
+            </li>
+
+            <li class="nav__item">
+              <%= link_to admin_comment_edit_path do %>
+                <i class="fa-regular fa-comment" style="font-size:35px;"></i><br>
+                コメント一覧
               <% end %>
             </li>
 
@@ -125,9 +135,13 @@
       <%= yield %>
     </body>
 
-<!--投稿一覧画面で記述したfloat: left;（要素の横並び）の影響を受けないためにclear: both;を記述。-->
-    <footer class="footer" style="background-color: #E0E0E0; clear: both;">
-      <p style="color: #fff; text-align: center;">CopyRight yuka</p>
-    </footer>
+  <!--投稿一覧画面で記述したfloat: left;（要素の横並び）の影響を受けないためにclear: both;を記述。-->
+    <div id="footer">
+      <footer>
+        <p>CopyRight yuka</p>
+      </footer>
+    </div>
+  </div>
+</div>
 </html>
 

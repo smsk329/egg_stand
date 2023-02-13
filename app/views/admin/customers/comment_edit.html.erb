@@ -1,0 +1,42 @@
+<h1 class="title">コメント一覧・削除</h1>
+コメント件数：全<%= @comments.count %>件
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+
+      <table class="table table-bordered" style="text-align:center">
+        <thead>
+          <tr>
+            <th>ユーザー</th>
+            <th>コメント内容</th>
+            <th>投稿日時</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @comments.each do |comment| %>
+            <tr>
+              <td>
+                <%= image_tag comment.customer.get_customer_image(30,30) %>
+                <%= comment.customer.name %>
+              </td>
+              <td>
+                <%= comment.post_comment %>
+              </td>
+              <td>
+                <%= comment.created_at.strftime('%Y/%m/%d') %>
+              </td>
+              <td>
+                <%= link_to shop_comment_path(comment.shop, comment), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+                <button type="button" class="btn btn-outline-danger btn-sm">削除する</button>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

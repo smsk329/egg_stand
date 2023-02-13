@@ -27,4 +27,9 @@ class Customer < ApplicationRecord
     end
   end
 
+  # 論理削除されたユーザーはログインできなくなる
+  def active_for_authentication?
+    super && !is_deleted
+  end
+
 end

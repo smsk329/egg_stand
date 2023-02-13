@@ -83,3 +83,45 @@
   border-top: 3px dotted #FFD428;
   border-bottom: 3px dotted #FFD428;
 }
+
+// アバウトページの画像
+.about ul{
+  // display: flex;
+  margin: 0;
+  padding: 0;
+}
+.about li{
+  margin: 20px;
+  padding: 0;
+  // リストの点を消す
+  list-style: none;
+}
+
+.sub-title {
+  padding: 10px;/*上下 左右の余白*/
+  color: #494949;/*文字色*/
+  border-left: solid 5px #FF5849;/*左線*/
+  font-weight: bold;
+  font-size: 20px;
+  font-family: "ヒラギノ丸ゴ ProN";
+}
+
+html,body {
+  height: 100%;
+}
+#wrapper {
+  position: relative;
+  min-height: 100%;
+}
+#container {
+  padding-bottom: 5em;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  height: 70px;
+  line-height: 70px;
+  background-color: #F7F7F7;
+  text-align: center;
+  width: 100%;
+}
