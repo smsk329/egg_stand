@@ -8,8 +8,6 @@ class Public::ShopsController < ApplicationController
     @shop = Shop.new(shop_params)
     @shop.customer_id = current_customer.id
     if @shop.save
-      # 中間テーブルにデータを入れる
-      GenreRelation.create(shop_id: @shop.id, genre_id: params[:shop][:genre_id])
       redirect_to root_path
     else
       render :new
@@ -32,14 +30,9 @@ class Public::ShopsController < ApplicationController
   end
 
   def update
-    # shop = Shop.find(params[:id])
-    # shop.update(shop_params)
-      # redirect_to shop_path(shop.id)
-
     @shop = Shop.find(params[:id])
     @shop.customer_id = current_customer.id
     if @shop.update(shop_params)
-      GenreRelation.update(shop_id: @shop.id, genre_id: params[:shop][:genre_id])
       redirect_to shop_path(@shop.id)
     else
       render :edit

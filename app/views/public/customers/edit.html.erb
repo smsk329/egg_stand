@@ -1,4 +1,4 @@
-<h1>ユーザー情報編集画面</h1>
+<h1 class="title">ユーザー情報編集画面</h1>
 
 <%= form_with model: @customer, url: customer_path do |f| %>
 
@@ -17,7 +17,6 @@
     <%= f.text_area :introduction%>
   </div>
 
-  <%= link_to "退会", withdrawal_check_path %>
   <p><%= f.submit '編集内容を保存' %></p>
 
 <% end %>

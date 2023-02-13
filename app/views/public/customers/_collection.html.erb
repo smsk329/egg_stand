@@ -1,0 +1,38 @@
+
+<% collection.each do |shop| %>
+  <!--bootstrapのカード-->
+  <div class="card shadow-sm" style="width: 270px; float: left; margin: 5px 5px 5px 0; padding: 15px;">
+
+      <%= link_to shop_path(shop.id) do %>
+        <%= shop.title %>
+      <% end %>
+
+      <!--モーニングの提供開始と終了の時刻-->
+        モーニング提供時間
+        <p>
+        <i class="fa-regular fa-clock"></i>
+        <%= shop.open_time.strftime("%H:%M") %>〜 <%= shop.close_time.strftime("%H:%M") %>
+        </p>
+
+      <%= link_to shop_path(shop.id) do %>
+        <div class="shop" style="text-align:center;">
+          <%= image_tag shop.get_shop_image(200,150) %>
+        </div>
+      <% end %>
+
+      <p style="width: 230px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">
+        <i class="fa-solid fa-location-dot"></i> <%= shop.address %>
+      </p>
+
+      <%= link_to show_others_customer_path(shop.customer.id) do %>
+        <div>
+          <%= image_tag shop.customer.get_customer_image(45,45) %>
+          <%= shop.customer.name %>
+        </div>
+      <% end %>
+
+      <!--いいねボタンの部分テンプレート-->
+      <%= render "public/favorites/favorites", shop: shop %>
+
+  </div>
+<% end %>

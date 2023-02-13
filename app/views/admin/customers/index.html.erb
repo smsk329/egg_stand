@@ -1,39 +1,47 @@
-<h1>登録ユーザー一覧</h1>
+<h1 class="title">登録ユーザー一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-    <th>会員ID</th>
-    <th>アカウント</th>
-    <th>メールアドレス</th>
-    <th>ステータス</th>
-    </tr>
-  </thead>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered" style="text-align:center">
+        <thead>
+          <tr>
+          <th>会員ID</th>
+          <th>アカウント</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <tr>
-      <% @customers.each do |customer| %>
-        <td>
-          <%= customer.id %>
-        </td>
-        <td>
-          <!--リンク先あとで編集する-->
-          <%= link_to root_path do %>
-            <%= image_tag customer.get_customer_image(45,45) %>
-            <%= customer.name %>
-          <% end %>
-        </td>
-        <td>
-          <%= customer.email %>
-        </td>
-        <td>
-          <% if customer.is_deleted == false %>
-            <p>有効</p>
-          <% else %>
-            <p>退会</p>
-        </td>
-      <% end %>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+        <tbody>
+          <tr>
+            <% @customers.each do |customer| %>
+              <td>
+                <%= customer.id %>
+              </td>
+              <td>
+                <!--リンク先あとで編集する-->
+                <%= link_to root_path do %>
+                  <%= image_tag customer.get_customer_image(35,35) %>
+                  <%= customer.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= customer.email %>
+              </td>
+              <td>
+                <%= link_to edit_admin_customer_path(customer) do %>
+                  <% if customer.is_deleted == false %>
+                    <p class = text-success>有効</p>
+                  <% else %>
+                    <p class = text-danger>退会</p>
+                  <% end %>
+                <% end %>
+              </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

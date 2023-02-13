@@ -1,32 +1,23 @@
-<h1>マイページ</h1>
+<h1 class="title">マイページ</h1>
 
-<!--部分テンプレート-->
-  <%= render "public/customers/information", customer: @customer %>
+<div class="container">
+  <div class="row">
 
-  <%= link_to "いいね一覧", bookmark_customer_path(@customer) %>
+    <div class="col-3">
+      <!--部分テンプレート-->
+        <%= render "public/customers/information", customer: @customer %>
 
-<h3>投稿一覧</h3>
+        <%= link_to "いいね一覧", bookmark_customer_path(@customer) %>
+    </div>
 
-<!--②ここから部分テンプレート化できます。homes/topと同じ記述です-->
-  <% @shops.each do |shop| %>
+    <div class="col-9">
+      <!--投稿情報の部分テンプレート-->
+      <% if @shops.present? %>
+        <%= render "public/customers/collection", collection: @shops %>
+      <% else %>
+       まだ投稿していません。
+      <% end %>
+    </div>
 
-    <%= link_to shop_path(shop.id) do %>
-      <%= shop.title %>
-    <% end %>
-    <!--モーニングの提供開始と終了の時刻-->
-    <p>OPEN <%= shop.open_time.strftime("%H:%M") %>〜CLOSE <%= shop.close_time.strftime("%H:%M") %></p>
-    <p><%= shop.address %></p>
-    <%= link_to shop_path(shop.id) do %>
-      <div>
-        <%= image_tag shop.get_shop_image(200,150) %>
-      </div>
-    <% end %>
-    <p>価格帯：約<%= shop.price %>円／一人</p>
-    <p><%= shop.customer.name %></p>
-
-  <!--いいねボタンの部分テンプレート-->
-  <%= render "public/favorites/favorites", shop: shop %>
-
-  <% end %>
-<!--ここまで部分テンプレート化できます-->
-
+  </div>
+</div>
