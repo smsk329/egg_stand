@@ -1,97 +1,108 @@
 <h1 class="title">編集する</h1>
 
-  <%= form_with model: @shop, url: shop_path(@shop.id), local:true do |f| %>
+<div class="container p-3">
+  <div class="row">
+    <div class="col">
 
-    <div class="form-group">
-      <%= f.label :shop_image,"モーニング画像" %>
-      <%= f.file_field :shop_image, accept: 'image/*' %>
-    </div>
+      <!--エラーメッセージの部分テンプレート-->
+      <%= render "layouts/errors", shop: @shop %>
 
-    <div class="form-group">
-      <%= f.label :title,"店舗名" %>
-      <%= f.text_field :title %>
-    </div>
+      <%= form_with model: @shop, url: shop_path(@shop.id), local:true do |f| %>
 
-    <div class="form-group">
-      <%= f.label :body,"紹介文" %>
-      <%= f.text_area :body %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :open_time,"モーニング提供時間(開始)"%>
-      <%= f.time_select :open_time %>
-      <%= f.label :close_time,"〜(終了)"%>
-      <%= f.time_select :close_time %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :address,"場所" %>
-      <%= f.text_field :address, placeholder:"東京都新宿区新宿１丁目１０−１", size: "60" %>
-    </div>
-
-    <div class="check_box">
-      <%= f.label :genre, "カテゴリー" %>
-      <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |genre| %>
-        <div>
-           <%= genre.label do %>
-             <%= genre.check_box %>
-             <%= genre.text %>
-           <% end %>
+        <div class="form-group">
+          <%= f.label :shop_image,"モーニング画像" %>
+          <%= f.file_field :shop_image, accept: 'image/*' %>
         </div>
-     <% end %>
+
+        <div class="form-group">
+          <%= f.label :title,"店舗名" %>
+          <%= f.text_field :title %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :body,"紹介文" %>
+          <%= f.text_area :body %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :open_time,"モーニング提供時間(開始)"%>
+          <%= f.time_select :open_time %>
+          <%= f.label :close_time,"〜(終了)"%>
+          <%= f.time_select :close_time %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :address,"場所" %>
+          <%= f.text_field :address, placeholder:"東京都新宿区新宿１丁目１０−１", size: "60" %>
+        </div>
+
+        <div class="check_box">
+          <%= f.label :genre, "カテゴリー(複数選択可)" %>
+          <%= f.collection_check_boxes(:genre_ids, Genre.all, :id, :name) do |genre| %>
+            <div>
+               <%= genre.label do %>
+                 <%= genre.check_box %>
+                 <%= genre.text %>
+               <% end %>
+            </div>
+         <% end %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :price,"一人あたりの価格帯" %>
+          <%= f.text_field :price %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :holiday,"定休日" %>
+          <%= f.text_field :holiday %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :mood, "お店の雰囲気" %>
+
+          <%= f.radio_button :mood,"quiet" %>
+          <%= f.label :mood, "落ち着いている" %>
+
+          <%= f.radio_button :mood,"active" %>
+          <%= f.label :mood, "にぎやか" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :wifi,"無料wi-fi" %>
+
+          <%= f.radio_button :wifi, :true %>
+          <%= f.label :wifi, "あり" %>
+
+          <%= f.radio_button :wifi, :false %>
+          <%= f.label :wifi, "なし" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :charging,"充電用コンセント" %>
+
+          <%= f.radio_button :charging, :true %>
+          <%= f.label :charging, "あり" %>
+
+          <%= f.radio_button :charging, :false %>
+          <%= f.label :charging, "なし" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :cashless,"キャッシュレス決済" %>
+
+          <%= f.radio_button :cashless, :true %>
+          <%= f.label :cashless, "可" %>
+
+          <%= f.radio_button :cashless, :false %>
+          <%= f.label :cashless, "不可" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "変更を保存",class:"actions btn btn-success btn-sm" %>
+        </div>
+
+      <% end %>
+
     </div>
-
-    <div class="form-group">
-      <%= f.label :price,"価格帯" %>
-      <%= f.text_field :price %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :holiday,"定休日" %>
-      <%= f.text_field :holiday %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :mood, "お店の雰囲気" %>
-
-      <%= f.radio_button :mood,"quiet" %>
-      <%= f.label :mood, "落ち着いている" %>
-
-      <%= f.radio_button :mood,"active" %>
-      <%= f.label :mood, "にぎやか" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :wifi,"無料wi-fi" %>
-
-      <%= f.radio_button :wifi, :true %>
-      <%= f.label :wifi, "あり" %>
-
-      <%= f.radio_button :wifi, :false %>
-      <%= f.label :wifi, "なし" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :charging,"充電用コンセント" %>
-
-      <%= f.radio_button :charging, :true %>
-      <%= f.label :charging, "あり" %>
-
-      <%= f.radio_button :charging, :false %>
-      <%= f.label :charging, "なし" %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :cashless,"キャッシュレス決済" %>
-
-      <%= f.radio_button :cashless, :true %>
-      <%= f.label :cashless, "可" %>
-
-      <%= f.radio_button :cashless, :false %>
-      <%= f.label :cashless, "不可" %>
-    </div>
-    <div class="form-group">
-      <%= f.submit "変更を保存" %>
-    </div>
-
-  <% end %>
+  </div>
+</div>

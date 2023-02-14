@@ -1,85 +1,95 @@
 <h1 class="title">モーニングの詳細</h1>
 
-<div><%= image_tag @shop.get_shop_image(300,200) %></div>
-<p><%= @shop.title %></p>
-<p><%= @shop.address %></p>
+<div class="container p-3">
+  <div class="row">
 
-  <% @shop.genres.each do |genre| %>
-      <span class="badge badge-pill badge-warning"><%= genre.name %></span>
-  <% end %>
+    <div class="col-5">
+      <div><%= image_tag @shop.get_shop_image(300,200) %></div>
+      <p><%= @shop.title %></p>
+      <p><%= @shop.address %></p>
 
-<div>
-  <%= image_tag @customer.get_customer_image(45,45) %>
-  <%= @shop.customer.name %>
-</div>
+        <% @shop.genres.each do |genre| %>
+            <span class="badge badge-pill badge-warning"><%= genre.name %></span>
+        <% end %>
 
-<p><%= @shop.body %></p>
-<p>OPEN <%= @shop.open_time.strftime("%H:%M") %>〜CLOSE <%= @shop.close_time.strftime("%H:%M") %></p>
-<p>定休日：<%= @shop.holiday %></p>
-<p>価格帯：約<%= @shop.price %>円／一人</p>
+      <div>
+        <%= image_tag @customer.get_customer_image(45,45) %>
+        <%= @shop.customer.name %>
+      </div>
 
-  <p>お店の雰囲気：
-    <%= @shop.mood_i18n %>
-  </p>
+      <p><%= @shop.body %></p>
+    </div>
 
-  <p>無料Wi-Fi：
-    <% if @shop.wifi == false %>
-      なし
-    <% else %>
-      あり
-    <% end %>
-  </p>
+    <div class="col-7">
+      <p>モーニング提供時間：<%= @shop.open_time.strftime("%H:%M") %>〜<%= @shop.close_time.strftime("%H:%M") %></p>
+      <p>定休日：<%= @shop.holiday %></p>
+      <p>価格帯：約<%= @shop.price %>円／一人</p>
 
-  <p>充電用コンセント：
-    <% if @shop.charging == false %>
-      なし
-    <% else %>
-      あり
-    <% end %>
-  </p>
+        <p>お店の雰囲気：
+          <%= @shop.mood_i18n %>
+        </p>
 
-  <p>キャッシュレス決済：
-    <% if @shop.cashless == false %>
-      不可
-    <% else %>
-      可
-    <% end %>
-  </p>
+        <p>無料Wi-Fi：
+          <% if @shop.wifi == false %>
+            なし
+          <% else %>
+            あり
+          <% end %>
+        </p>
 
-<% if @shop.customer == current_customer %>
-  <%= link_to "編集", edit_shop_path(@shop.id) %>
-  <%= link_to "削除", shop_path(@shop.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
-<% end %>
+        <p>充電用コンセント：
+          <% if @shop.charging == false %>
+            なし
+          <% else %>
+            あり
+          <% end %>
+        </p>
 
-  <!--いいねボタンの部分テンプレート-->
-  <%= render "public/favorites/favorites", shop: @shop %>
+        <p>キャッシュレス決済：
+          <% if @shop.cashless == false %>
+            不可
+          <% else %>
+            可
+          <% end %>
+        </p>
 
-<!--コメント機能-->
-<div>
-  <p><i class="fa-solid fa-comment"></i><%= @shop.comments.count %></p>
-  <% @shop.comments.each do |comment| %>
-  <div>
-    <%= image_tag comment.customer.get_customer_image(30,30) %>
-    <%= comment.customer.name %>
-  </div>
-    <p><%= comment.post_comment %></p>
-    <%= comment.created_at.strftime('%Y/%m/%d') %>
-
-    <% if comment.customer == current_customer %>
-      <%= link_to shop_comment_path(comment.shop, comment), method: :delete, "data-confirm" => "本当に消しますか？" do %>
-        <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+      <% if @shop.customer == current_customer %>
+        <%= link_to "編集", edit_shop_path(@shop.id) %>
+        <%= link_to "削除", shop_path(@shop.id), method: :delete, "data-confirm" => "本当に消しますか？" %>
       <% end %>
-    <% end %>
 
-  <% end %>
-</div>
+        <!--いいねボタンの部分テンプレート-->
+        <%= render "public/favorites/favorites", shop: @shop %>
 
-<!--ユーザーがログインしている場合のみコメント投稿機能を表示-->
-<% if customer_signed_in? %>
-<div>
-  <%= form_with model: [@shop, @comment] do |f| %>
-    <%= f.text_area :post_comment, rows: '3', placeholder: "コメントを入力" %>
-    <%= f.submit "送信する" %>
-  <% end %>
+      <!--コメント機能-->
+      <div>
+        <p><i class="fa-solid fa-comment"></i><%= @shop.comments.count %></p>
+        <% @shop.comments.each do |comment| %>
+        <div>
+          <%= image_tag comment.customer.get_customer_image(30,30) %>
+          <%= comment.customer.name %>
+        </div>
+          <p><%= comment.post_comment %></p>
+          <%= comment.created_at.strftime('%Y/%m/%d') %>
+
+          <% if comment.customer == current_customer %>
+            <%= link_to shop_comment_path(comment.shop, comment), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+              <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+            <% end %>
+          <% end %>
+
+        <% end %>
+      </div>
+
+      <!--ユーザーがログインしている場合のみコメント投稿機能を表示-->
+      <% if customer_signed_in? %>
+      <div>
+        <%= form_with model: [@shop, @comment] do |f| %>
+          <%= f.text_area :post_comment, rows: '3', placeholder: "コメントを入力（200文字以内）" %>
+          <p><%= f.submit "送信する",class:"actions btn btn-success btn-sm" %></p>
+        <% end %>
+      </div>
+      <% end %>
+　　</div>
+  </div>
 </div>
-<% end %>

@@ -1,5 +1,8 @@
 class Public::CustomersController < ApplicationController
 
+  before_action :is_matching_login_customer, only: [:edit, :update]
+  before_action :authenticate_customer!, except: [:show]
+
   # マイページ(ログイン中のユーザーの情報、投稿一覧)
   def show
     @customer = current_customer
@@ -33,9 +36,12 @@ class Public::CustomersController < ApplicationController
   end
 
   def update
-    customer = Customer.find(params[:id])
-    customer.update(customer_params)
-      redirect_to customer_path(customer.id)
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to customer_path(@customer.id)
+    else
+      render :edit
+    end
   end
 
   # 退会確認画面
@@ -50,6 +56,13 @@ class Public::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:customer_image, :name, :introduction)
+  end
+
+  def is_matching_login_customer
+    customer_id = params[:id].to_i
+    unless customer_id == current_customer.id
+      redirect_to root_path
+    end
   end
 
 end
