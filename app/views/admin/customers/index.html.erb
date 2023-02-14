@@ -20,11 +20,8 @@
                 <%= customer.id %>
               </td>
               <td>
-                <!--リンク先あとで編集する-->
-                <%= link_to root_path do %>
                   <%= image_tag customer.get_customer_image(35,35) %>
                   <%= customer.name %>
-                <% end %>
               </td>
               <td>
                 <%= customer.email %>

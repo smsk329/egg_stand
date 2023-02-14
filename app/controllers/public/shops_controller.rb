@@ -1,5 +1,8 @@
 class Public::ShopsController < ApplicationController
 
+  before_action :authenticate_customer!, except: [:show]
+  before_action :is_matching_login_customer, only: [:edit, :update]
+
   def new
     @shop = Shop.new
   end
@@ -49,6 +52,14 @@ class Public::ShopsController < ApplicationController
 
   def shop_params
     params.require(:shop).permit(:customer_id, :shop_image, :title, :body, :open_time, :close_time, :address, :price, :holiday, :mood, :wifi, :charging, :cashless, genre_ids: [])
+  end
+  
+  def is_matching_login_customer
+    @shop = Shop.find(params[:id])
+    @customer = @shop.customer
+    unless @customer == current_customer
+      redirect_to root_path
+    end
   end
 
 end

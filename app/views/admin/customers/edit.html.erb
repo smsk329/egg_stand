@@ -1,4 +1,8 @@
 <h1 class="title">会員ステータス変更</h1>
+
+      <!--エラーメッセージの部分テンプレート-->
+        <%= render "layouts/errors", shop: @customer %>
+        
     <%= @customer.name %>さんの会員情報編集
 
         <%= form_with model:@customer, url: admin_customer_path(@customer), local:true do |f| %>

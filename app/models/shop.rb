@@ -5,6 +5,15 @@ class Shop < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :genre_relations, dependent: :destroy
   has_many :genres, through: :genre_relations
+  
+  validates :title, presence: true
+  validates :body, presence: true,length:{maximum:200}
+  validates :open_time, presence: true
+  validates :close_time, presence: true
+  validates :address, presence: true
+  validates :price, presence: true
+  validates :holiday, presence: true
+  validates :mood, presence: true
 
   enum mood: { quiet: 0, active: 1 }
 

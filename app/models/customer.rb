@@ -9,6 +9,9 @@ class Customer < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :genre_relations
 
+  validates :name, length: { minimum: 2, maximum: 20 }
+  validates :introduction, length:{ maximum: 50 }
+
   has_one_attached :customer_image
 
   def get_customer_image(width, height)

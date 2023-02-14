@@ -1,44 +1,50 @@
 <h1 class="title">新規登録</h1>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+<div class="container p-3">
+  <div class="row">
+    <div class="col">
 
-  <div class="form-group">
-    <%= f.label :customer_image,"ユーザー画像" %>
-    <%= f.file_field :customer_image, accept: 'image/*' %>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+
+        <div class="form-group">
+          <%= f.label :customer_image,"ユーザー画像" %>
+          <%= f.file_field :customer_image, accept: 'image/*' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :"アカウント名" %><br>
+          <%= f.text_field :name, autofocus: true %>
+        </div>
+
+        <div class="field">
+          <%= f.label :"紹介文" %><br>
+          <%= f.text_area :introduction %>
+        </div>
+
+        <div class="field">
+          <%= f.label :"メールアドレス" %><br>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </div>
+      <br>
+        <div class="actions">
+          <%= f.submit "新規登録",class:"actions btn btn-success btn-sm" %>
+        </div>
+      <% end %>
+      <p>登録済みの方は<%= render "public/shared/links" %></p>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :"アカウント名" %><br>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :introduction %><br>
-    <%= f.text_area :introduction %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>
