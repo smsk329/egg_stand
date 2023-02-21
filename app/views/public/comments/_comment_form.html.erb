@@ -1,0 +1,9 @@
+<!--ユーザーがログインしている場合のみコメント投稿機能を表示-->
+<% if customer_signed_in? %>
+  <div>
+    <%= form_with model: [shop, comment], local: false do |f| %>
+      <%= f.text_area :post_comment, rows: '3', placeholder: "コメントを入力（200文字以内）" %>
+      <p><%= f.submit "送信する",class:"actions btn btn-success btn-sm" %></p>
+    <% end %>
+  </div>
+<% end %>

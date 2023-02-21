@@ -31,6 +31,9 @@
 - モーニングできるお店を記録したいとき（登録）
 
 ## 設計書
+- https://docs.google.com/spreadsheets/d/1MkL5jQ3gvGo2s2gcirr2H53506tp1GM_/edit#gid=549108681
+- https://docs.google.com/spreadsheets/d/1cYx44pIsCnFj3d_EFXlRuIN4Gr_KVuQW8bdY08PgFfg/edit#gid=1071442547
+- https://docs.google.com/spreadsheets/d/1oGS5_Lbc9CcowxHih9yRqP0XzJqM8SffRvGJFTtoU0E/edit#gid=1773513600
 
 ## 開発環境
 - OS：Linux(CentOS)

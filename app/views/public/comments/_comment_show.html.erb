@@ -1,0 +1,18 @@
+<!--コメント表示部分-->
+<div>
+  <p><i class="fa-solid fa-comment"></i><%= shop.comments.count %></p>
+  <% shop.comments.each do |comment| %>
+  <div>
+    <%= image_tag comment.customer.get_customer_image(30,30) %>
+    <%= comment.customer.name %>
+  </div>
+  <p><%= comment.post_comment %></p>
+    <%= comment.created_at.strftime('%Y/%m/%d') %>
+
+    <% if comment.customer == current_customer %>
+      <%= link_to shop_comment_path(comment.shop, comment), method: :delete, remote: true, "data-confirm" => "本当に消しますか？" do %>
+        <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

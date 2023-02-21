@@ -32,7 +32,8 @@
       <% end %>
 
       <!--いいねボタンの部分テンプレート-->
-      <%= render "public/favorites/favorites", shop: shop %>
-
+      <div id="favorite_buttons_<%= shop.id %>">
+        <%= render "public/favorites/favorites", shop: shop %>
+      </div>
   </div>
 <% end %>
