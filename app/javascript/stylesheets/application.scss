@@ -9,10 +9,10 @@
 
 .brand {
   display: inline-block;
+  text-decoration: none;
   /*太字にする*/
   font-weight: bold;
   font-family: "Arial Black";
-  text-decoration: none;
   // ロゴカラー黄色
   color: #FFD428;
   font-size: 40px;
@@ -124,4 +124,14 @@ html,body {
   background-color: #F7F7F7;
   text-align: center;
   width: 100%;
+  color: #6F6F6F;
+}
+
+.favorite {
+  background-color: #FFF8EE;
+  padding: 6px;/*文字周りの余白*/
+  margin: 2px;
+  border-radius: 0.5em;/*角丸*/
+  text-align: center;
+  text-decoration: none;
 }

@@ -3,11 +3,13 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-3">
+    <div class="col-3" style="text-align: center;">
       <!--部分テンプレート-->
-        <%= render "public/customers/information", customer: @customer %>
+      <%= render "public/customers/information", customer: @customer %>
 
-        <%= link_to "いいね一覧", bookmark_customer_path(@customer) %>
+      <%= link_to bookmark_customer_path(@customer) do %>
+        <button type="button" class="btn btn-success btn-sm">ブックマーク一覧</button>
+      <% end %>
     </div>
 
     <div class="col-9">
