@@ -1,5 +1,5 @@
 <h1 class="title">コメント一覧・削除</h1>
-コメント件数：全<%= @comments.count %>件
+コメント件数：全<%= @comment_all.count %>件
 
 <div class="container">
   <div class="row">
@@ -29,7 +29,7 @@
                 <%= comment.created_at.strftime('%Y/%m/%d') %>
               </td>
               <td>
-                <%= link_to shop_comment_path(comment.shop, comment), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+                <%= link_to admin_comment_destroy_path(comment.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
                 <button type="button" class="btn btn-outline-danger btn-sm">削除する</button>
                 <% end %>
               </td>
@@ -37,6 +37,12 @@
           <% end %>
         </tbody>
       </table>
+
     </div>
   </div>
+
+  <div class="row" style="margin: 20px; justify-content: center;">
+      <%= paginate @comments %>
+  </div>
+
 </div>

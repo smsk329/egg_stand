@@ -45,6 +45,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'homes/top' => "homes#top", as: "top"
 
     get 'customers/comment_edit' => "customers#comment_edit", as: "comment_edit"
+    delete 'customers/comment_destroy/:id' => "customers#comment_destroy", as: "comment_destroy"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:create, :index, :edit, :update]
     # 不要と思われる

@@ -14,7 +14,7 @@
   font-weight: bold;
   font-family: "Arial Black";
   // ロゴカラー黄色
-  color: #FFD428;
+  color: #FFC14E;
   font-size: 40px;
 }
 
@@ -26,7 +26,8 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
   text-align: center;
-  background-color: #F7F7F7;
+  background-color: #EDF4F1;
+
 }
 
 .nav__wrapper {
@@ -53,10 +54,6 @@
 .nav__item a:hover  {
   transform: scale(1.2);
 }
-
-// .nav__item a:visited {
-//   color: #FF8D6A;
-// }
 
 .nav__toggle {
   display: none; }
@@ -121,7 +118,7 @@ html,body {
   bottom: 0;
   height: 70px;
   line-height: 70px;
-  background-color: #F7F7F7;
+  background-color: #EDF4F1;
   text-align: center;
   width: 100%;
   color: #6F6F6F;
@@ -134,4 +131,23 @@ html,body {
   border-radius: 0.5em;/*角丸*/
   text-align: center;
   text-decoration: none;
+}
+
+/*ページネーション自体のデザイン*/
+.pagination>li>a {
+  border: none;     /*枠線をなくす*/
+  color: #6F6F6F;   /*文字の色を変える*/
+}
+
+/* 表示しているページ番号のデザイン */
+.pagination>.active>.page-link {
+  background-color: #FFC14E;
+  border-radius: 70% 60% 50% 50% / 50% 60% 70% 80%;
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {
+  border-radius: 70% 50% 70% 60% / 40% 80% 60% 70%;
+  background-color: #EDF4F1;
+  color: #6F6F6F;
 }

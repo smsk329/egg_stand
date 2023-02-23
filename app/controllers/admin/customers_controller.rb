@@ -1,10 +1,21 @@
 class Admin::CustomersController < ApplicationController
+
+  before_action :authenticate_admin!
+
   def index
     @customers = Customer.all
   end
 
   def comment_edit
-    @comments = Comment.all
+    @comment_all = Comment.all
+    @comments = Comment.all.page(params[:page]).per(8)
+
+  end
+
+  def comment_destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+      redirect_to request.referer
   end
 
   def edit

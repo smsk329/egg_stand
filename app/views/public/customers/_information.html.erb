@@ -1,7 +1,7 @@
 <% if customer.is_deleted == false %>
 
   <div><%= image_tag customer.get_customer_image(150,100) %></div>
-  <h4><%= customer.name %></h4>
+  <h4 style="margin-top: 10px;"><%= customer.name %></h4>
   <p style="background-color: #F7F7F7; border-radius: 0.5em; padding: 10px;"><%= customer.introduction %></p>
 
   <% if customer == current_customer %>

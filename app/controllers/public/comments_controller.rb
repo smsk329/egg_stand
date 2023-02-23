@@ -4,7 +4,6 @@ class Public::CommentsController < ApplicationController
     post_comment = current_customer.comments.new(comment_params)
     post_comment.shop_id = @shop.id
     post_comment.save
-    #byebug
   end
 
   def destroy

@@ -31,6 +31,11 @@
       <!--投稿情報の部分テンプレート-->
       <%= render "public/customers/collection", collection: @shops %>
     </div>
+  </div>
 
+  <div class="row" style="margin: 20px; justify-content: center;">
+      <%= paginate @shops %>
   </div>
 </div>
+
+
