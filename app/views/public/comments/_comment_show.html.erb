@@ -3,29 +3,39 @@
   <p><i class="fa-regular fa-comment-dots fa-2x" style="color: #898989;"></i> <%= shop.comments.count %>件のコメントがあります</p>
   <% shop.comments.each do |comment| %>
 
-  <!--ログイン中のユーザーの場合-->
-  <% if comment.customer == current_customer %>
+  <!--コメントするのが投稿者の場合-->
+  <% if comment.customer == @shop.customer %>
     <div style="margin-top: 20px; margin-left: 40px;">
       <%= image_tag comment.customer.get_customer_image(30,30) %>
       <%= comment.customer.name %>
     </div>
 
-    <div style="background-color: #F3F8F6; border-radius: 0.5em; margin-left: 40px;">
+    <div style="background-color: #F8EFEF; border-radius: 0.5em; margin-left: 40px;">
       <p style="padding: 7px; margin-bottom: 0;"><%= comment.post_comment %></p>
       <p style="padding: 3px; margin-bottom: 0; text-align: right; font-size: 12px;"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
-      <%= link_to shop_comment_path(comment.shop, comment), method: :delete, remote: true, "data-confirm" => "本当に消しますか？" do %>
-        <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span></p>
+
+      <% if comment.customer == current_customer %>
+        <%= link_to shop_comment_path(comment.shop, comment), method: :delete, remote: true, "data-confirm" => "本当に消しますか？" do %>
+          <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span></p>
+        <% end %>
       <% end %>
 
+  <!--コメントするのが投稿者以外の場合-->
   <% else %>
-  <!--ログイン中のユーザー以外の場合-->
       <div style="margin-top: 20px; margin-right: 40px;">
         <%= image_tag comment.customer.get_customer_image(30,30) %>
         <%= comment.customer.name %>
       </div>
-      <div style="background-color: #EDF4F1; border-radius: 0.5em; margin-right: 40px;">
+      <div style="background-color: #F8F5F4; border-radius: 0.5em; margin-right: 40px;">
       <p style="padding: 7px; margin-bottom: 0;"><%= comment.post_comment %></p>
       <p style="padding: 3px; margin-bottom: 0; text-align: right; font-size: 12px;"><%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>
+
+      <% if comment.customer == current_customer %>
+        <%= link_to shop_comment_path(comment.shop, comment), method: :delete, remote: true, "data-confirm" => "本当に消しますか？" do %>
+          <span class="badge badge-pill badge-danger"><i class="fa-solid fa-xmark"></i></span></p>
+        <% end %>
+      <% end %>
+
   <% end %>
   </div>
   <% end %>

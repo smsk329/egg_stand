@@ -17,11 +17,6 @@ class Public::ShopsController < ApplicationController
     end
   end
 
-  def index
-    @shops = Shop.all
-    # 投稿一覧はtopページに表示するため今のところ不要
-  end
-
   def show
     @shop = Shop.find(params[:id])
     @customer = @shop.customer
