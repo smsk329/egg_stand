@@ -13,6 +13,7 @@
         </div>
 
         <div class="field">
+          <span class="kome">※</span>
           <%= f.label :"アカウント名" %><br>
           <%= f.text_field :name, autofocus: true %>
         </div>
@@ -23,11 +24,13 @@
         </div>
 
         <div class="field">
+          <span class="kome">※</span>
           <%= f.label :"メールアドレス" %><br>
           <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
         </div>
 
         <div class="field">
+          <span class="kome">※</span>
           <%= f.label :password %>
           <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -36,6 +39,7 @@
         </div>
 
         <div class="field">
+          <span class="kome">※</span>
           <%= f.label :password_confirmation %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>

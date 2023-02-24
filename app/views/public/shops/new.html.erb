@@ -15,16 +15,19 @@
             </div>
 
             <div class="form-group">
+              <span class="kome">※</span>
               <%= f.label :title,"店舗名" %>
               <%= f.text_field :title, autofocus: true %>
             </div>
 
             <div class="form-group">
+              <span class="kome">※</span>
               <%= f.label :body,"紹介文" %>
               <%= f.text_area :body %>
             </div>
 
             <div class="form-group">
+              <span class="kome">※</span>
               <%= f.label :open_time,"モーニング提供時間(開始)"%>
               <%= f.time_select :open_time, {:default =>{:hour => '8', :minute => '00'}, :minute_step => 30} %>
               <%= f.label :close_time,"〜(終了)"%>
@@ -32,6 +35,7 @@
             </div>
 
             <div class="form-group">
+              <span class="kome">※</span>
               <%= f.label :address, "場所" %>
               <%= f.text_field :address, placeholder:"東京都新宿区新宿１丁目１０−１", size: "60" %>
             </div>
@@ -49,16 +53,19 @@
             </div>
 
             <div class="form-group">
+              <span class="kome">※</span>
               <%= f.label :price, "価格帯：" %>
               約<%= f.text_field :price, placeholder:"1000" %>円／一人
             </div>
 
             <div class="form-group">
+              <span class="kome">※</span>
               <%= f.label :holiday, "定休日" %>
               <%= f.text_field :holiday, placeholder:"水曜日" %>
             </div>
 
             <div class="form-group">
+              <span class="kome">※</span>
               <%= f.label :mood, "お店の雰囲気" %>
 
               <%= f.radio_button :mood,"quiet" %>
