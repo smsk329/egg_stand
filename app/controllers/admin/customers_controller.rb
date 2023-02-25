@@ -1,6 +1,7 @@
 class Admin::CustomersController < ApplicationController
 
   before_action :authenticate_admin!
+  before_action :ensure_normal_user, only: :edit
 
   def index
     @customers = Customer.all
@@ -35,6 +36,13 @@ class Admin::CustomersController < ApplicationController
 
   def customer_params
     params.require(:customer).permit(:name, :email, :is_deleted)
+  end
+
+  def ensure_normal_user
+    @customer = Customer.find(params[:id])
+    if @customer.email == 'guest@test.com'
+      redirect_to admin_customers_path
+    end
   end
 
 end

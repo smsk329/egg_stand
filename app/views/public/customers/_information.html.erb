@@ -1,3 +1,6 @@
+<!--ゲストユーザーは編集できません。のフラッシュメッセージ-->
+<div style="color: red;"><%= flash[:notice] %></div>
+
 <% if customer.is_deleted == false %>
 
   <div><%= image_tag customer.get_customer_image(150,100) %></div>

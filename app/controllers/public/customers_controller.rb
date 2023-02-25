@@ -2,6 +2,7 @@ class Public::CustomersController < ApplicationController
 
   before_action :is_matching_login_customer, only: [:edit, :update]
   before_action :authenticate_customer!, except: [:show]
+  before_action :ensure_normal_user, only: :edit
 
   # マイページ(ログイン中のユーザーの情報、投稿一覧)
   def show
@@ -62,6 +63,14 @@ class Public::CustomersController < ApplicationController
     customer_id = params[:id].to_i
     unless customer_id == current_customer.id
       redirect_to root_path
+    end
+  end
+
+  def ensure_normal_user
+    @customer = Customer.find(params[:id])
+    if @customer.email == 'guest@test.com'
+      flash[:notice] = "ゲストユーザーは編集できません"
+      redirect_to customer_path(@customer.id)
     end
   end
 

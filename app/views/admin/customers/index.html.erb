@@ -27,11 +27,16 @@
                 <%= customer.email %>
               </td>
               <td>
-                <%= link_to edit_admin_customer_path(customer) do %>
-                  <% if customer.is_deleted == false %>
-                    <p class = text-success>有効</p>
-                  <% else %>
-                    <p class = text-danger>退会</p>
+                <!--ゲストログインの場合には編集・退会させないようにする-->
+                <% if customer.email == 'guest@test.com' %>
+                有効（編集不可）
+                <% else %>
+                  <%= link_to edit_admin_customer_path(customer) do %>
+                    <% if customer.is_deleted == false %>
+                      <p class = text-success>有効</p>
+                    <% else %>
+                      <p class = text-danger>退会</p>
+                    <% end %>
                   <% end %>
                 <% end %>
               </td>
