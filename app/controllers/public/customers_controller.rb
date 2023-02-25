@@ -45,14 +45,6 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  # 退会確認画面
-  def withdrawal_check
-  end
-
-  # 退会処理
-  def withdrawal
-  end
-
   private
 
   def customer_params
@@ -69,8 +61,8 @@ class Public::CustomersController < ApplicationController
   def ensure_normal_user
     @customer = Customer.find(params[:id])
     if @customer.email == 'guest@test.com'
-      flash[:notice] = "ゲストユーザーは編集できません"
       redirect_to customer_path(@customer.id)
+      flash[:alert] = "ゲストユーザーは編集できません。"
     end
   end
 
