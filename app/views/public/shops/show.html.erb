@@ -3,116 +3,115 @@
 <div class="container p-3">
   <div class="row">
 
-  <div class="responsive">
-      <div class="col-xl-6 col-lg-6 col-12">
-        <h4><%= @shop.title %></h4>
-        <p style="font-size: 15px; margin-bottom: 0;">モーニング提供時間 <i class="fa-regular fa-clock"></i> <%= @shop.open_time.strftime("%H:%M") %>〜<%= @shop.close_time.strftime("%H:%M") %></p>
-        <% @shop.genres.each do |genre| %>
-          <span class="badge badge-pill badge-warning"><%= genre.name %></span>
-        <% end %>
-        <div style="margin-top: 10px; "><%= image_tag @shop.get_shop_image(350,250) %></div>
-        <p style="margin: 20px 80px 20px 0;"><i class="fa-solid fa-location-dot" style="color: #FF7504;"></i> <%= @shop.address %></p>
-  
-        <!--いいねボタンの部分テンプレート-->
-        <div id="favorite_buttons_<%= @shop.id %>" style="margin:20px 170px 20px 0;">
-          <%= render "public/favorites/favorites", shop: @shop %>
-        </div>
-  
-        <div>
-          <%= link_to show_others_customer_path(@shop.customer.id) do %>
-            <%= image_tag @customer.get_customer_image(45,45) %>
-            <%= @shop.customer.name %>
-          <% end %>
-        </div>
-  
-        <p>お店の紹介：<%= @shop.body %></p>
-  
-        <table class="table" style="width: 80%; font-size: clamp(12px, 3vw, 15px);">
-          <tr>
-            <td>
-              定休日
-            </td>
-            <td>
-              <%= @shop.holiday %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              価格帯
-            </td>
-            <td>
-              約<%= @shop.price %>円／一人
-            </td>
-          </tr>
-          <tr>
-            <td>
-              お店の雰囲気
-            </td>
-            <td>
-              <%= @shop.mood_i18n %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              無料Wi-Fi
-            </td>
-            <td>
-              <% if @shop.wifi == false %>
-                なし
-              <% else %>
-                あり
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              充電用コンセント
-            </td>
-             <td>
-              <% if @shop.charging == false %>
-                なし
-              <% else %>
-                あり
-              <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              キャッシュレス決済
-            </td>
-            <td>
-              <% if @shop.cashless == false %>
-                不可
-              <% else %>
-                可
-              <% end %>
-            </td>
-          </tr>
-        </table>
-  
-        <% if @shop.customer == current_customer %>
-          <%= link_to edit_shop_path(@shop.id) do %>
-            <button type="button" class="btn btn-primary btn-sm">編集する</button>
-          <% end %>
-  
-          <%= link_to shop_path(@shop.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
-            <button type="button" class="btn btn-danger btn-sm">削除する</button>
-          <% end %>
-        <% end %>
-  
+    <div class="col-xl-6 col-lg-6 col-12">
+      <h4><%= @shop.title %></h4>
+      <p style="font-size: 15px; margin-bottom: 0;">モーニング提供時間 <i class="fa-regular fa-clock"></i> <%= @shop.open_time.strftime("%H:%M") %>〜<%= @shop.close_time.strftime("%H:%M") %></p>
+      <% @shop.genres.each do |genre| %>
+        <span class="badge badge-pill badge-warning"><%= genre.name %></span>
+      <% end %>
+      <div style="margin-top: 10px; "><%= image_tag @shop.get_shop_image(350,250) %></div>
+      <p style="margin: 20px 80px 20px 0;"><i class="fa-solid fa-location-dot" style="color: #FF7504;"></i> <%= @shop.address %></p>
+
+      <!--いいねボタンの部分テンプレート-->
+      <div id="favorite_buttons_<%= @shop.id %>" style="margin:20px 170px 20px 0;">
+        <%= render "public/favorites/favorites", shop: @shop %>
       </div>
-  
-      <div class="col-xl-6 col-lg-6 col-12">
-  
-        <!--コメント機能の部分テンプレート-->
-        <div id="comments_area">
-          <%= render 'public/comments/comment_show', shop: @shop %>
-        </div>
-        <div class="new_comment">
-          <%= render 'public/comments/comment_form', shop: @shop, comment: @comment %>
-        </div>
-  
-  　　</div>
-　　</div>
+
+      <div>
+        <%= link_to show_others_customer_path(@shop.customer.id) do %>
+          <%= image_tag @customer.get_customer_image(45,45) %>
+          <%= @shop.customer.name %>
+        <% end %>
+      </div>
+
+      <p>お店の紹介：<%= @shop.body %></p>
+
+      <table class="table" style="width: 80%; font-size: clamp(12px, 3vw, 15px);">
+        <tr>
+          <td>
+            定休日
+          </td>
+          <td>
+            <%= @shop.holiday %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            価格帯
+          </td>
+          <td>
+            約<%= @shop.price %>円／一人
+          </td>
+        </tr>
+        <tr>
+          <td>
+            お店の雰囲気
+          </td>
+          <td>
+            <%= @shop.mood_i18n %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            無料Wi-Fi
+          </td>
+          <td>
+            <% if @shop.wifi == false %>
+              なし
+            <% else %>
+              あり
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            充電用コンセント
+          </td>
+           <td>
+            <% if @shop.charging == false %>
+              なし
+            <% else %>
+              あり
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            キャッシュレス決済
+          </td>
+          <td>
+            <% if @shop.cashless == false %>
+              不可
+            <% else %>
+              可
+            <% end %>
+          </td>
+        </tr>
+      </table>
+
+      <% if @shop.customer == current_customer %>
+        <%= link_to edit_shop_path(@shop.id) do %>
+          <button type="button" class="btn btn-primary btn-sm">編集する</button>
+        <% end %>
+
+        <%= link_to shop_path(@shop.id), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+          <button type="button" class="btn btn-danger btn-sm">削除する</button>
+        <% end %>
+      <% end %>
+
+    </div>
+
+    <div class="col-xl-6 col-lg-6 col-12">
+
+      <!--コメント機能の部分テンプレート-->
+      <div id="comments_area">
+        <%= render 'public/comments/comment_show', shop: @shop %>
+      </div>
+      <div class="new_comment">
+        <%= render 'public/comments/comment_form', shop: @shop, comment: @comment %>
+      </div>
+
+    </div>
+
   </div>
 </div>
