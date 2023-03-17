@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-3" style="text-align: center;">
+    <div class="col-lg-3 col-10" style="text-align: center;">
       <!--ユーザー情報の部分テンプレート-->
         <%= render "public/customers/information", customer: @customer %>
 
@@ -13,7 +13,7 @@
       <% end %>
     </div>
 
-    <div class="col-9">
+    <div class="col-lg-9 col-10">
       <!--投稿情報の部分テンプレート-->
       <% if @shops.present? %>
         <%= render "public/customers/collection", collection: @shops %>

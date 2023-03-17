@@ -3,7 +3,7 @@
 <div class="container p-3">
   <div class="row">
 
-    <div class="col-6">
+    <div class="col-xl-6 col-lg-6 col-12">
       <h4><%= @shop.title %></h4>
       <p style="font-size: 15px; margin-bottom: 0;">モーニング提供時間 <i class="fa-regular fa-clock"></i> <%= @shop.open_time.strftime("%H:%M") %>〜<%= @shop.close_time.strftime("%H:%M") %></p>
       <% @shop.genres.each do |genre| %>
@@ -26,7 +26,7 @@
 
       <p>お店の紹介：<%= @shop.body %></p>
 
-      <table class="table" style="width: 400px;">
+      <table class="table" style="width: 80%; font-size: clamp(12px, 3vw, 15px);">
         <tr>
           <td>
             定休日
@@ -101,7 +101,7 @@
 
     </div>
 
-    <div class="col-6">
+    <div class="col-xl-6 col-lg-6 col-12">
 
       <!--コメント機能の部分テンプレート-->
       <div id="comments_area">

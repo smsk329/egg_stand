@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-3">
+    <div class="col-xl-3 col-lg-4 col-10 text-center">
       <!--検索フォーム-->
       <%= search_form_for @q, url: root_path do |f| %>
         <!--title_contは、あいまい検索を指定-->
@@ -27,7 +27,7 @@
       <% end %>
     </div>
 
-    <div class="col-9">
+    <div class="col-xl-9 col-lg-8">
       <!--投稿情報の部分テンプレート-->
       <%= render "public/customers/collection", collection: @shops %>
     </div>
