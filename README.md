@@ -34,6 +34,8 @@
 - https://docs.google.com/spreadsheets/d/1MkL5jQ3gvGo2s2gcirr2H53506tp1GM_/edit#gid=549108681
 - https://docs.google.com/spreadsheets/d/1cYx44pIsCnFj3d_EFXlRuIN4Gr_KVuQW8bdY08PgFfg/edit#gid=1071442547
 - https://docs.google.com/spreadsheets/d/1oGS5_Lbc9CcowxHih9yRqP0XzJqM8SffRvGJFTtoU0E/edit#gid=1773513600
+- https://app.diagrams.net/#G1Nd1YLIwxNsGl4rRgi8dhk5Pi3ViIa-0i
+- https://app.diagrams.net/#G1b5XCM-G6kJY34B5KvUqZ_Ru_ND10FQyx
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -43,4 +45,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 使用検討中です。
+- https://pixabay.com/ja/
+- https://www.linustock.com/
