@@ -7,13 +7,13 @@ class Public::CustomersController < ApplicationController
   # マイページ(ログイン中のユーザーの情報、投稿一覧)
   def show
     @customer = current_customer
-    @shops = @customer.shops
+    @shops = @customer.shops.order(created_at: :desc)
   end
 
   # 他のユーザーの情報、投稿一覧
   def show_others
     @customer = Customer.find(params[:id])
-    @shops = @customer.shops
+    @shops = @customer.shops.order(created_at: :desc)
   end
 
   #  ログイン中のユーザーがいいねした投稿を表示
