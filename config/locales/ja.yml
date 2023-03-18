@@ -1,6 +1,22 @@
- ja:
-    enums:
-      shop:
-        mood:
-          quiet: "落ち着いている"
-          active: "にぎやか"
+ja:
+ activerecord:
+  attributes:
+   shop:
+    title: 店舗名
+    body: 紹介文
+    address: 場所
+    price: 価格帯
+    holiday: 定休日
+    mood: お店の雰囲気
+   customer:
+    name: アカウント名
+    introduction: 自己紹介
+    email: メールアドレス
+    password: パスワード
+ enums:
+  shop:
+   mood:
+    quiet: "落ち着いている"
+    active: "にぎやか"
+
+

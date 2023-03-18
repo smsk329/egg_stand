@@ -5,7 +5,7 @@ class Shop < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :genre_relations, dependent: :destroy
   has_many :genres, through: :genre_relations
-  
+
   validates :title, presence: true
   validates :body, presence: true,length:{maximum:200}
   validates :open_time, presence: true
@@ -22,7 +22,7 @@ class Shop < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/noimage.jpg')
       shop_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-      shop_image.variant(resize_to_limit: [width, height]).processed
+      shop_image.variant(resize: "#{width}x#{height}").processed
   end
 
   def favorited_by?(customer)
