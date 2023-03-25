@@ -26,7 +26,10 @@
               <td><%= genre.name %></td>
               <td>
                 <%= link_to edit_admin_genre_path(genre) do %>
-                <span class="badge badge-pill badge-danger"><i class="fa-solid fa-pen-to-square"></i></span>
+                  <span class="badge badge-pill badge-success">編集</span>
+                <% end %>
+                <%= link_to admin_genre_path(genre), method: :delete, "data-confirm" => "本当に消しますか？" do %>
+                  <span class="badge badge-pill badge-danger">削除</span>
                 <% end %>
               </td>
             </tr>

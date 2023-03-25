@@ -7,11 +7,11 @@ class Shop < ApplicationRecord
   has_many :genres, through: :genre_relations
 
   validates :title, presence: true
-  validates :body, presence: true,length:{maximum:200}
+  validates :body, presence: true, length:{maximum:200}
   validates :open_time, presence: true
   validates :close_time, presence: true
   validates :address, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :holiday, presence: true
   validates :mood, presence: true
 

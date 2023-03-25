@@ -1,4 +1,5 @@
 class Public::CommentsController < ApplicationController
+
   def create
     @shop = Shop.find(params[:shop_id])
     post_comment = current_customer.comments.new(comment_params)
@@ -7,7 +8,12 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
-    Comment.find(params[:id]).destroy
+    comment = Comment.find(params[:id])
+    if comment.customer != current_customer
+      redirect_to root_path
+    else
+      comment.destroy
+    end
     @shop = Shop.find(params[:shop_id])
   end
 

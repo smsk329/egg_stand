@@ -47,7 +47,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'customers/comment_edit' => "customers#comment_edit", as: "comment_edit"
     delete 'customers/comment_destroy/:id' => "customers#comment_destroy", as: "comment_destroy"
     resources :customers, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:create, :index, :edit, :update]
+    resources :genres, only: [:create, :index, :edit, :update, :destroy]
     # 不要と思われる
     resources :genre_relations, only: [:destroy]
 
