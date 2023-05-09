@@ -18,6 +18,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     post 'public/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
+# 「scope module」を使うことでルーティングをグループ化する。URLは変わらない（publicとか付かない）
   scope module: :public do
 
     root to: 'homes#top'
@@ -40,6 +41,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     end
   end
 
+# 「namespace」を使うことでルーティングをグループ化する。URLにadminと付くようになる。
+# ファイル構成もadmin/＊＊＊に
   namespace :admin do
 
     get 'homes/top' => "homes#top", as: "top"

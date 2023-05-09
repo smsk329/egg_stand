@@ -1,6 +1,7 @@
 class Admin::CustomersController < ApplicationController
 
   before_action :authenticate_admin!
+  # ゲストユーザーの編集ページにアクセスした場合、会員一覧画面に戻る
   before_action :ensure_normal_user, only: :edit
 
   def index

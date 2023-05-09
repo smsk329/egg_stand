@@ -4,9 +4,9 @@
   <div class="row">
 
     <div class="col-xl-3 col-lg-4 col-10" style="text-align: center;">
-      <!--検索フォーム-->
+      <!--検索フォーム トップ画面にあるデータが対象-->
       <%= search_form_for @q, url: root_path do |f| %>
-        <!--title_contは、あいまい検索を指定-->
+        <!--title_contは、あいまい検索（部分一致）を指定-->
         <%= f.search_field :title_cont, placeholder: '店舗名' %>
         <%= f.submit "検索", class: 'btn btn-secondary btn-sm' %>
       <% end %>

@@ -7,9 +7,9 @@ class Public::HomesController < ApplicationController
     if params[:genre_id].present?
       shop_list = shops.select{|o| o.genre_ids.include?(params[:genre_id].to_i) }
       # selectを使うとarray（配列）になるためページネーションが使えない。mapでactiverecordを取得する。
-      shop_ids = shop_list.map do |shop|
-        shop.id
-      end
+        shop_ids = shop_list.map do |shop|
+          shop.id
+        end
       # 検索結果の絞り込みをする前に、件数表示のための変数を用意する
       @shop_count = Shop.where(id: shop_ids).count
       # activ recordで検索結果を表示する

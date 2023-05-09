@@ -1,5 +1,6 @@
 class Admin::GenresController < ApplicationController
 
+# ログイン済みの管理者のみアクセスを許可するdeviseのメソッド
   before_action :authenticate_admin!
 
   def index
